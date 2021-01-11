@@ -1,0 +1,44 @@
+package entities;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Random;
+
+public class Mago extends Personagem {
+	
+private List<String> habilidade = new ArrayList<String>();
+	
+	public Mago(String nome, int vida, int mana, int inteligencia, int forca, int level, float xp, List<String> habilidade) {
+		super(nome, vida, mana, inteligencia, forca, level, xp, habilidade);		
+	}		
+
+	public List<String> getHabilidade() {
+		return habilidade;
+	}
+
+	public void setMagia(List<String> magia) {
+		this.habilidade = magia;
+	}
+
+
+	@Override
+	public int getlvlUp() {
+		setInteligencia(this.getInteligencia() + 5);
+		setMana(this.getMana() + 10);
+		aprendeMagia("Ignimpacto");
+		return super.getlvlUp();
+	}	
+	
+	public void aprendeMagia(String novaMagia) {
+		habilidade.add(novaMagia);
+	}
+
+	public int attack() 
+	{
+		int ataque; 
+		Random aleatorio = new Random();
+		int numero = aleatorio.nextInt(300) + 1;
+		ataque = (this.getInteligencia()* this.getLevel()) + numero;
+		return ataque;
+	}
+

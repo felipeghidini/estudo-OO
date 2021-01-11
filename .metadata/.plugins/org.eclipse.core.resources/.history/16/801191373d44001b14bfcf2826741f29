@@ -1,0 +1,165 @@
+package test;
+
+import static org.junit.Assert.*;
+
+import org.junit.Assert;
+import org.junit.Before;
+import org.junit.Test;
+
+import entities.Veiculo;
+
+public class VeiculoTest {
+	
+	private Veiculo veiculo;
+	
+	@Before
+	public void setup() {
+		veiculo = new Veiculo();
+	}
+	
+	@Test
+	public void testAcelerarVeiculoQuandoEstiverLigado() throws Exception {
+		veiculo.ligar();
+		veiculo.acelerar();
+		assertEquals(20, veiculo.getVelocidade());
+	}
+
+	@Test
+	public void testNaoAcelerarVeiculoSeEstiverDesligado() throws Exception {
+		veiculo.acelerar();
+		assertEquals(false, veiculo.isLigado());
+	}
+	
+	@Test
+	public void testAbastecerVeiculoSeTanqueEstiverVazio() throws Exception {
+		veiculo.abastecer(60);
+		assertEquals(60, 60);
+	}
+	
+	@Test
+	public void testAbastecerAlemDaCapacidadeDoTanque() throws Exception {
+		veiculo.abastecer(80);
+		veiculo.setLitrosCombustivel(80);
+		assertEquals(80, 80.0, 0.0);
+	}
+	
+	@Test
+	public void testRetornarAQuantidadeDeCombustivel() throws Exception {
+		veiculo.getLitrosCombustivel();
+		assertEquals(60.0, 60.0, 0.0);
+	}
+	
+	@Test
+	public void testTentarFrearVeiculoSeEstiverDesligado() throws Exception {
+		veiculo.frear();
+		assertEquals(false, veiculo.isLigado());
+	}
+	
+	@Test
+	public void testFrearCarroEmMovimento() throws Exception {
+		veiculo.ligar();
+		veiculo.frear();
+		assertEquals(true, veiculo.isLigado());
+	}
+	
+	@Test
+	public void testPintarVeiculo() throws Exception {
+		String cor = veiculo.getCor();
+		veiculo.pintar(cor);
+		assertEquals(cor, veiculo.getCor());
+	}
+	
+	@Test
+	public void testLigarVeiculoSeEstiverDesligado() throws Exception {
+		veiculo.ligar();
+		assertEquals(true, veiculo.isLigado());
+	}
+	
+	@Test
+	public void testVeiculoLigadoNaoLigarNovamente() throws Exception {
+		veiculo.ligar();
+		veiculo.ligar();
+		assertEquals(true, veiculo.isLigado());
+	}
+	
+	
+	@Test
+	public void testDesligarVeiculoQuandoEstiverLigado() throws Exception {
+		veiculo.ligar();
+		veiculo.desligar();
+		assertEquals(false, veiculo.isLigado());
+	}
+	
+	@Test
+	public void testDesligarVeiculoQueJaEstaDesligado() throws Exception {
+		veiculo.desligar();
+		assertEquals(false, veiculo.isLigado());
+	}
+	
+	@Test
+	public void testDesligarVeiculoEmMovimento() throws Exception {
+		veiculo.ligar();
+		veiculo.getVelocidade();
+		veiculo.desligar();
+		assertEquals(false, veiculo.isLigado());
+	}
+
+	@Test
+	public void testFrearEDesligarVeiculoEmMovimento() throws Exception {
+		veiculo.ligar();
+		veiculo.acelerar();
+		veiculo.desligar();
+		assertEquals(true, veiculo.isLigado());
+	}
+	
+	@Test
+	public void testConstrucaoDoVeiculo() throws Exception {
+		Veiculo veiculo = new Veiculo("Fiat", "Palio", "ABC 1234", "Prata", 100000, 10000);
+		assertEquals(true, true);
+	}
+	
+	@Test
+	public void testMarcaDoVeiculo() throws Exception {
+		String marca = veiculo.getMarca();
+		assertEquals(marca, veiculo.getMarca());
+	}
+	
+	@Test
+	public void testModeloDoVeiculo() throws Exception {
+		String modelo = veiculo.getModelo();
+		assertEquals(modelo, veiculo.getModelo());
+	}
+	
+	@Test
+	public void testPlacaDoVeiculo() throws Exception {
+		String placa = veiculo.getPlaca();
+		assertEquals(placa, veiculo.getPlaca());
+	}
+	
+	@Test
+	public void testKilometragemDoVeiculo() throws Exception {
+		float km = veiculo.getKm();
+		assertEquals(km, veiculo.getKm(), 0.01);
+	}
+	
+	@Test
+	public void testPrecoDoVeiculo() throws Exception {
+		double preco = veiculo.getPreco();
+		assertEquals(preco, veiculo.getKm(), 0.01);
+	}
+	
+	@Test
+	public void testName() throws Exception {
+		Veiculo car = new Veiculo("Renault", "Sandero", "ABC-0123", "Branco", 22000, 33.000);
+		car.ligar();
+		car.acelerar();
+		car.abastecer(65); //Quantidade excede o tamanho do tanque
+		car.frear();
+		car.frear(); // Carro já está parado
+		car.pintar("Preto");
+		car.ligar(); //Carro já está ligado
+		car.desligar();
+		car.acelerar(); //Não é possível acelerar, pois o veiculo está desligado
+		car.desligar(); // Veículo desligado !
+	}
+}

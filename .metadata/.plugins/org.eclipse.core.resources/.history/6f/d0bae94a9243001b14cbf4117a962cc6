@@ -1,0 +1,23 @@
+package test;
+
+import static org.junit.Assert.*;
+
+import org.junit.Test;
+
+import entities.Veiculo;
+
+public class VeiculoTest {
+	
+	@Test
+	public void testAcelerar() throws Exception {
+		Veiculo veiculo = new Veiculo("Fiat", "Palio", "DYA 5386", "Prata", 86000, 10000);
+		int velocidade = 0;
+		
+		if(veiculo.isLigado() == true) {
+			velocidade += 20;
+		}else {
+			System.out.println("Carro está desligado e n~]ao pode acelerar !");
+		}
+	}
+
+}

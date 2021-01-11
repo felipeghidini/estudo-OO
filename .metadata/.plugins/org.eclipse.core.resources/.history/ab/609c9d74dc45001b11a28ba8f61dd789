@@ -1,0 +1,42 @@
+package test;
+
+import static org.junit.Assert.*;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import org.junit.Before;
+import org.junit.Test;
+
+import entities.Guerreiro;
+import entities.Mago;
+
+public class RpgTest {
+		
+	@Mock
+	private Guerreiro guerreiro;
+	
+	@Mock
+	private Mago mago;
+	
+	@Before
+	void setup() {
+		List<String> habilidades = new ArrayList<>();
+		String habilidade = "Soco normal";
+		habilidades.add(habilidade);
+		
+		guerreiro = new Guerreiro("Ana",  200, 100,20,15,1,25, habilidades);
+		mago = new Mago("Pam",  50, 50,20,20,2,25, habilidades);
+	}
+	
+	@Test
+	public void testName() throws Exception {
+		int nivelEsperado = guerreiro.getLevel() + 1;
+		int tamanho = guerreiro.getHabilidade().size() + 1;
+		guerreiro.getlvlUp();
+		assertEquals(nivelEsperado, guerreiro.getHabilidade().size());
+	}
+	
+
+
+}

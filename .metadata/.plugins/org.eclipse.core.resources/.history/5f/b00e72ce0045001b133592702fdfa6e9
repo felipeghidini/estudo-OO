@@ -1,0 +1,30 @@
+package test;
+
+import static org.junit.Assert.*;
+
+import org.junit.Test;
+
+import entities.Funcionario;
+import entities.Gerente;
+import entities.Supervisor;
+
+public class FuncionarioTest {
+	
+	private Gerente gerente;
+	private Supervisor supervisor;
+	
+	@Test
+	public void testSalarioMaisBonusGerente() throws Exception {
+		gerente = new Gerente("Amanda", 29, 8000);
+		double total = gerente.bonificacao();
+		assertEquals(18000, total, 0.01);
+	}
+	
+	@Test
+	public void testSalarioMaisBonusSupervisor() throws Exception {
+		supervisor = new Supervisor("Carol", 23, 5500);
+		double total = supervisor.bonificacao();
+		assertEquals(10500, total, 0.01);
+	}
+
+}

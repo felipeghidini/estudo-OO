@@ -1,0 +1,48 @@
+package entities;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Random;
+
+public class Guerreiro extends Personagem {
+	
+private List<String> habilidade = new ArrayList<String>();
+	
+	public Guerreiro(String nome, int vida, int mana, int inteligencia, int forca, int level, float xp, List<String> habilidade) {
+		super(nome, vida, mana, inteligencia, forca, level, xp, habilidade);		
+	}
+
+	public List<String> getHabilidade() {
+		return habilidade;
+	}
+
+	public void setHabilidade(List<String> habilidade) {
+		this.habilidade = habilidade;
+	}
+
+	public void aprenderHabilidade(String habilidades){
+		habilidade.add(habilidades);
+	}
+	@Override
+	public int getlvlUp() {
+		setForca(this.getForca() + 5);
+		setVida(this.getVida() + 10);
+		novaHabilidade("Ataque rápido");
+		return super.getlvlUp();
+	}
+	private void novaHabilidade(String nome) {
+		this.habilidade.add(nome);
+	}
+
+	public int attack() 
+	{
+		int ataque; 
+		Random aleatorio = new Random();
+		int numero = aleatorio.nextInt(300) + 1;
+		ataque = (this.getForca()* this.getLevel()) + numero;
+		return ataque;
+	}
+	
+	
+}
+

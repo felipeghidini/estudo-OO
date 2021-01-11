@@ -1,0 +1,21 @@
+package test;
+
+import static org.junit.Assert.assertEquals;
+
+import org.junit.Test;
+
+import entities.Funcionario;
+import entities.Gerente;
+
+public class FuncionarioTest {
+	
+	private Gerente gerente;
+	
+	@Test
+	public void testDescricaoFuncionario() throws Exception {
+		gerente = new Gerente("Amanda", 29, 8000);
+		double total = gerente.bonificacao();
+		assertEquals(18000, total, 0.01);
+	}
+
+}

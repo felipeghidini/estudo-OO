@@ -1,0 +1,74 @@
+package application;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import entities.Guerreiro;
+import entities.Mago;
+import entities.Personagem;
+
+public class Program {
+
+	public static void main(String[] args) {
+		
+		List<String> habilidade = new ArrayList<>();
+		String habilidades = "Gancho";
+		habilidade.add(habilidades);
+		
+		Mago mago1 = new Mago("Zelda",  100, 100,10,10,1,25, habilidade);
+		Mago mago2 = new Mago("Merlin",  50, 50,20,20,2,25, habilidade);
+		Mago mago3 = new Mago("Gandalph", 200, 200,100,30,2,25, habilidade);
+		
+		Guerreiro guerreiro1 = new Guerreiro("Cloud",  200, 100,20,15,1,25, habilidade);
+		Guerreiro guerreiro2 = new Guerreiro("Bjorn",  300, 50,25,30,1,25, habilidade);
+		Guerreiro guerreiro3 = new Guerreiro("Ragnar",  500, 30,15,20,1,25, habilidade);
+		
+		
+		List<Mago> magos = new ArrayList<>();
+		{
+			magos.add(mago1);
+			magos.add(mago2);
+			magos.add(mago3);
+		}
+		List<Guerreiro> guerreiros = new ArrayList<>();
+		{
+			guerreiros.add(guerreiro1);
+			guerreiros.add(guerreiro2);
+			guerreiros.add(guerreiro3);
+		}
+		mago1.aprendeMagia("Raio");
+		mago2.aprendeMagia("Alucinação");
+		mago2.aprendeMagia("Sono");
+		mago3.aprendeMagia("Golpe Fantasma");
+		
+		guerreiro1.aprenderHabilidade("Voadora");
+		guerreiro1.aprenderHabilidade("Cascudo");
+		guerreiro2.aprenderHabilidade("Trombada");
+		guerreiro3.aprenderHabilidade("Soco forte");
+		
+		System.out.println(Personagem.getContadorPerso());
+		mago1.getlvlUp();
+		System.out.println("---------------------------------------------------------------------------");
+		for(int i = 0; i < magos.size(); i++){
+			System.out.println("Mago: " + magos.get(i).getNome() + ", Level: " +magos.get(i).getLevel()
+				+ ", Inteligência " +magos.get(i).getInteligencia() + " Magia: " + magos.get(i).getHabilidade());
+			System.out.println("");
+		}
+		
+		System.out.println("---------------------------------------------------------------------------");
+		guerreiro1.getlvlUp();
+		guerreiro2.getlvlUp();
+		guerreiro3.getlvlUp();
+		
+		for(int i = 0; i < guerreiros.size(); i++){
+			System.out.println("Guerreiro: " + guerreiros.get(i).getNome() + ", Level: " +guerreiros.get(i).getLevel()
+				+ ", Inteligência " +guerreiros.get(i).getInteligencia() + " Habilidade: " + guerreiros.get(i).getHabilidade());
+			System.out.println("");
+		}
+		for(int i = 0; i < magos.size(); i++){
+			System.out.println("Mago(a) " + magos.get(i).getNome() + " ataca: " + magos.get(i).attack());
+			//Utilizei o mesmo for porque nesse caso mago e guerreiro tem a mesma quantidade de elementos
+			System.out.println("Guerreiro(a) " + guerreiros.get(i).getNome() + " ataca: " + guerreiros.get(i).attack());
+		}
+	}
+}

@@ -1,0 +1,26 @@
+package test;
+
+import static org.junit.Assert.*;
+
+import org.junit.Test;
+
+import entities.Funcionario;
+import entities.Gerente;
+
+public class FuncionarioTest {
+	
+	private Funcionario funcionario;
+	
+	@Test
+	public void testDescricaoFuncionario() throws Exception {
+		funcionario = new Funcionario("Amanda", 29, 8000) {
+			
+			@Override
+			public double bonificacao() {
+				Gerente gerente = new Gerente("Amanda", 29, 8000);
+				return gerente.bonificacao();
+			}
+		};
+	}
+
+}

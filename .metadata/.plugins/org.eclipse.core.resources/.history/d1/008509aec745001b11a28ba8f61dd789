@@ -1,0 +1,61 @@
+package entities;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Random;
+
+public class Guerreiro extends Personagem {
+	
+	private List<String> habilidade;
+	
+	public Guerreiro(String nome) {
+		super(nome, 200, 100, 0, 20, 50, 1);		
+		this.habilidade = new ArrayList<String>();
+		this.habilidade.add("Corpo a Corpo");
+		this.habilidade.add("Aura da Espada");
+	}
+
+
+
+	public List<String> getHabilidade() {
+		return habilidade;
+	}
+
+
+
+	public void setHabilidade(List<String> habilidade) {
+		this.habilidade = habilidade;
+	}
+
+
+	public void lvlUp() {
+		super.setVida(getVida()+50);
+		super.setMana(getMana()+20);
+		super.setXp(getXp()+100);
+		super.setInteligencia(getInteligencia()+2);
+		super.setForca(getForca()+5);
+		super.setLevel(getLevel()+1);
+		
+		System.out.println("Level Up!");
+	}
+	
+	public void attack() {
+		Random numRandom = new Random();
+		int fatorMultiplicacao = numRandom.nextInt(300);
+
+		int attack = (super.getForca() * super.getLevel()) + fatorMultiplicacao;
+		System.out.println("Efetuou attack com " + attack + " de dano.");
+	}
+	
+	public void aprenderHabilidade(String habilidade) {		
+		this.habilidade.add(habilidade);
+	}
+	
+	@Override
+	public String toString() {
+		return "Guerreiro [Habilidades=" + getHabilidade() + ", Nome=" + getNome() + ", Vida="
+				+ getVida() + ", Mana=" + getMana() + ", Xp=" + getXp() + ", Inteligencia="
+				+ getInteligencia() + ", Forca=" + getForca() + ", Level=" + getLevel() + "]";
+	}
+}
+

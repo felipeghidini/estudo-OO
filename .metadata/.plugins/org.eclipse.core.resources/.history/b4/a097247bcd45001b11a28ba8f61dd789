@@ -1,0 +1,68 @@
+package test;
+
+import static org.junit.Assert.assertEquals;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import org.junit.Before;
+import org.junit.Test;
+
+import entities.Guerreiro;
+import entities.Mago;
+
+public class RpgTest {
+		
+	@Mock
+	private Guerreiro guerreiro;
+	
+	@Mock
+	private Mago mago;
+	
+	@Before
+	void setup() {
+		List<String> habilidades = new ArrayList<>();
+		String habilidade = "Gancho";
+		habilidades.add(habilidade);
+		
+		guerreiro = new Guerreiro("Ragnar", 500, 30,15,20,1,25, habilidades);
+		mago = new Mago("Merlin",  50, 50,20,20,2,25, habilidades);
+	}
+	
+	@Test
+	void deveSubirONivelDoGuerreiroEAprenderUmaHabilidade() {
+		int nivelEsperado = guerreiro.getLevel() + 1;
+		int tamanho = guerreiro.getHabilidade().size() + 1; 
+		guerreiro.getlvlUp();
+		assertEquals(nivelEsperado, guerreiro.getLevel());
+		assertEquals(tamanho, guerreiro.getHabilidade().size());
+	}
+
+	@Test
+	void deveSubirONivelDoMagoEAprenderUmaHabilidade() {
+		int nivelEsperado = mago.getLevel() + 1;
+		int tamanho = mago.getHabilidade().size() + 1; 
+		
+		mago.getlvlUp();
+		
+		assertEquals(nivelEsperado, mago.getLevel());
+		assertEquals(tamanho, mago.getHabilidade().size());
+	}
+	@Test
+	void deveAtacarComTodosOsPersonage() throws Exception {
+		assertNotEquals(0, guerreiro.attack());
+		assertNotEquals(0, mago.attack());
+	}
+
+	@Test
+	void deveAprenderHabilidade() throws Exception {
+		int esperado = guerreiro.getHabilidade().size()+1;
+		guerreiro.aprenderHabilidade("Soco");
+		
+		assertEquals(esperado, guerreiro.getHabilidade().size());
+	}
+}
+
+
+
+
