@@ -15,7 +15,9 @@ public class Program {
 		Retangulo ret = new Retangulo();
 		
 		System.out.println("Enter rectangle width and height:");
+		System.out.println("Enter width");
 		ret.width = sc.nextDouble();
+		System.out.println("Enter height");
 		ret.height = sc.nextDouble();
 		
 				
