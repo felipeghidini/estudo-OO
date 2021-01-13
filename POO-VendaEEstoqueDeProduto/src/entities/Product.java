@@ -6,6 +6,7 @@ public class Product {
 	public double price;
 	public int quantity;
 	
+
 	public double totalValueInStock() {
 		return quantity * price;
 	}
