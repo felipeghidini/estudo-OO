@@ -15,7 +15,12 @@
     <fullyQualifiedTypeName name="entities.Livro"/>
     <fullyQualifiedTypeName name="entities.Guerreiro"/>
     <fullyQualifiedTypeName name="java.util.List"/>
+    <fullyQualifiedTypeName name="entities.Media"/>
+    <fullyQualifiedTypeName name="entities.CurrencyConverter"/>
+    <fullyQualifiedTypeName name="entities.Account"/>
     <fullyQualifiedTypeName name="java.util.Locale"/>
     <fullyQualifiedTypeName name="java.util.Scanner"/>
-    <fullyQualifiedTypeName name="entities.Media"/>
+    <fullyQualifiedTypeName name="java.util.Date"/>
+    <fullyQualifiedTypeName name="model.entities.Vehicle"/>
+    <fullyQualifiedTypeName name="model.services.BrazilTaxService"/>
 </qualifiedTypeNameHistroy>
